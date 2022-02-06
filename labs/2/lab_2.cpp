@@ -88,7 +88,7 @@ double LaunchHumanCannonball(double initial_velocity, double launch_angle) {
   // (2) Compute final horizontal/x velocity
   //     [x_velocity = initial_velocity * cos(radian_angle)]
   // CODE HERE
-  double x_velocity = initial_velocity + cos(radian_angle);
+  double x_velocity = initial_velocity * cos(radian_angle);
   // (3) Compute final vertical/y velocity
   //     [y_velocity = initial_velocity * sin(radian_angle) * -1]
   // CODE HERE
