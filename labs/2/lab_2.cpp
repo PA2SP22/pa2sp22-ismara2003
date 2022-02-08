@@ -4,7 +4,7 @@
  * Description : Using Arithmetic to finish the functions MakeChange() and
  *               LaunchHumanCannonball()
  */
- // to run test ./lab_2 
+// to run test ./lab_2
 
 // Please note the header above. You need to include the name of the file, the
 // author, a description of the program and any sources used
@@ -88,12 +88,12 @@ double LaunchHumanCannonball(double initial_velocity, double launch_angle) {
   // (2) Compute final horizontal/x velocity
   //     [x_velocity = initial_velocity * cos(radian_angle)]
   // CODE HERE
-  double x_velocity = initial_velocity + cos(radian_angle);
+  double x_velocity = initial_velocity * cos(radian_angle);
   // (3) Compute final vertical/y velocity
   //     [y_velocity = initial_velocity * sin(radian_angle) * -1]
   // CODE HERE
   double y_velocity = initial_velocity * sin(radian_angle) * -1;
-  // (4) Compute time of flight 
+  // (4) Compute time of flight
   //     [flight_time = (y_velocity) * 2 / -9.8]
   // CODE HERE
   double flight_time = y_velocity * 2 / -9.8;
