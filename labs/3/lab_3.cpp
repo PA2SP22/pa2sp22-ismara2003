@@ -103,7 +103,8 @@ int RockScissorPaper(char player_one, char player_two) {
   // CODE HERE
   // enum Result {PLAYER_1_WIN = 1, PLAYER_2_WIN = 2, DRAW = 3};
   switch (player_one) {
-    case 'R'|| 'r':
+    case 'R':
+    case 'r':
       if ((player_two == 'R') || (player_two == 'r')) {
         return 3;
       } else if ((player_two == 'S') || (player_two == 's')) {
@@ -112,7 +113,8 @@ int RockScissorPaper(char player_one, char player_two) {
         return 2;
       }
       break;
-    case 'S' || 's':
+    case 'S':
+    case 's':
       if ((player_two == 'R') || (player_two == 'r')) {
         return 2;
       } else if ((player_two == 'S') || (player_two == 's')) {
@@ -121,7 +123,8 @@ int RockScissorPaper(char player_one, char player_two) {
         return 1;
       }
       break;
-    case 'P' || 'p':
+    case 'P':
+    case 'p':
       if ((player_two == 'R') || (player_two == 'r')) {
         return 1;
       } else if ((player_two == 'S') || (player_two == 's')) {
@@ -145,7 +148,7 @@ int RockScissorPaper(char player_one, char player_two) {
 string CharWithAsciiValueAsString(char character) {
   // CODE HERE
   stringstream sout;
-  sout << character << static_cast<int>(character) << endl;
+  sout << character << ' ' << static_cast<int>(character);
   return sout.str();
 }
 
