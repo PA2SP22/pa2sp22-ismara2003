@@ -26,7 +26,14 @@ using std::stringstream;
  * @return string - A string containing the contents of values separated by the
  *                  specified separator character
  */
-string PrepareForDisplay(int values[], int size, char separator = ',');
+string PrepareForDisplay(int values[], int size, char separator = ',') {
+stringstream ss;
+for (int i = 0; i < size - 1; i++) {
+  ss << values[i] << separator;
+}
+ss << values[size - 1];
+return ss.str();
+}
 
 /*
  * Test to see if an array contains a specified value.
@@ -35,8 +42,16 @@ string PrepareForDisplay(int values[], int size, char separator = ',');
  * @param int value - The value to search for within the array
  * @return bool - true if value is found in the array, otherwise false
  */
-bool HasValue(int values[], int size, int value);
-
+bool HasValue(int values[], int size, int value) {
+  bool found;
+  for (int i = 0; i < size; i++) {
+    if (values[i] = value) {
+      found = true;
+    }
+    }
+    return found;
+  }
+  // it will return multiple answers.. I need to return just once when found
 /*
  * Return the value from an array at a specified index.
  * @param int values -  An array of integers
@@ -47,7 +62,9 @@ bool HasValue(int values[], int size, int value);
  * @return int - The value at the specified index in the array when error is set
  *               to false. if index is invalid, returns 0 and sets error to true
  */
-int ValueAt(int values[], int size, int index, bool& error);
+int ValueAt(int values[], int size, int index, bool& error) {
+  return 0;
+}
 
 /*
  * Return the sum of the values in an integer array.
@@ -55,7 +72,9 @@ int ValueAt(int values[], int size, int index, bool& error);
  * @param int size - The size of the integer array
  * @return int - The sum of the values in the array
  */
-int Sum(int values[], int size);
+int Sum(int values[], int size) {
+  return 0;
+}
 
 /*
  * Swap the positions of two values in an integer array. The two
@@ -66,7 +85,9 @@ int Sum(int values[], int size);
  * @param int index2 - The position of the second value to be swapped
  * @return bool - true if the swap was successful, otherwise false
  */
-bool SwapValues(int values[], int size, int index1, int index2);
+bool SwapValues(int values[], int size, int index1, int index2) {
+  return false;
+}
 
 // For testing (DO NOT ALTER)
 #include <cctype>
