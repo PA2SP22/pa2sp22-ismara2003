@@ -1,6 +1,6 @@
 /*
  * Name        : lab_5.cpp
- * Author      : FILL IN
+ * Author      : Amara Ihekwoeme
  * Description : Working with Arrays
  */
 
@@ -27,12 +27,12 @@ using std::stringstream;
  *                  specified separator character
  */
 string PrepareForDisplay(int values[], int size, char separator = ',') {
-stringstream ss;
-for (int i = 0; i < size - 1; i++) {
-  ss << values[i] << separator;
-}
-ss << values[size - 1];
-return ss.str();
+  stringstream ss;
+  for (int i = 0; i < size - 1; i++) {
+    ss << values[i] << separator;
+  }
+  ss << values[size - 1];
+  return ss.str();
 }
 
 /*
@@ -43,15 +43,15 @@ return ss.str();
  * @return bool - true if value is found in the array, otherwise false
  */
 bool HasValue(int values[], int size, int value) {
-  bool found;
+  bool found = false;
   for (int i = 0; i < size; i++) {
-    if (values[i] = value) {
+    if (values[i] == value) {
       found = true;
     }
-    }
-    return found;
   }
-  // it will return multiple answers.. I need to return just once when found
+  return found;
+}
+
 /*
  * Return the value from an array at a specified index.
  * @param int values -  An array of integers
@@ -63,7 +63,14 @@ bool HasValue(int values[], int size, int value) {
  *               to false. if index is invalid, returns 0 and sets error to true
  */
 int ValueAt(int values[], int size, int index, bool& error) {
-  return 0;
+  // Check for an invalid index
+  if (index >= size || index < 0) {
+    error = true;
+    return 0;
+  }
+  // everything good! return the value at the index
+  error = false;
+  return values[index];
 }
 
 /*
@@ -73,7 +80,11 @@ int ValueAt(int values[], int size, int index, bool& error) {
  * @return int - The sum of the values in the array
  */
 int Sum(int values[], int size) {
-  return 0;
+  int sum = 0;
+  for (int i = 0; i < size; i++) {
+    sum = values[i] + sum;
+  }
+  return sum;
 }
 
 /*
@@ -86,7 +97,16 @@ int Sum(int values[], int size) {
  * @return bool - true if the swap was successful, otherwise false
  */
 bool SwapValues(int values[], int size, int index1, int index2) {
-  return false;
+  // If indexes are invalid, return false
+  if (index1 >= size || index2 >= size || index1 < 0 || index2 < 0) {
+    return false;
+  }
+  // Swap the values
+  int value1 = values[index1];
+  int value2 = values[index2];
+  values[index2] = value1;
+  values[index1] = value2;
+  return true;
 }
 
 // For testing (DO NOT ALTER)

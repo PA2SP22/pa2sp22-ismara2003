@@ -1,6 +1,6 @@
 /*
  * Name        : lab_4.cpp
- * Author      : FILL IN
+ * Author      : Amara Ihekwoeme
  * Description : Use branching statements, looping statements and string and
  *               character functions to complete the functions
  */
@@ -83,7 +83,7 @@ char StringToChar(string value) {
   // CODE HERE
   if (value.length() == 0) {
     return '\0';
-  } else if (value.length() > 0) {
+  } else if (value.length() > 1) {
     return '\0';
   } else {
     return value.at(0);
@@ -149,7 +149,7 @@ double StringToDouble(string value) {
  */
 bool StringToBool(string value) {
   // CODE HERE
-  if (value.at(0) == 'T') {
+  if (value.length() > 0 && value.at(0) == 'T') {
     return true;
   } else {
     return false;
