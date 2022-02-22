@@ -1,28 +1,29 @@
 /*
- * Name        : FILL IN
- * Author      : FILL IN
- * Description : FILL IN
- * Sources     : FILL IN
+ * Name        : Assignment 1
+ * Author      : Amara Ihekwoeme
+ * Description : Working on functions
+ * Sources     : 
  */
 
 #ifndef ASSIGNMENT_1_H
 #define ASSIGNMENT_1_H
 
 // Add any includes and using statements Here
-
+#include <string>
+using namespace std;
 // Declare Function Prototypes Here (What goes above main)
-bool CheckAlphabetic(const string &s);
+bool CheckAlphabetic(const string &word);
 
-/*
-Function 1
-Function Name:
-CheckAlphabetic
-Function Parameters:
-string (by const reference)
-Function Return:
-bool
-Function Description:
-This function will check to make sure all characters in a given string are alphabetic. It returns true if the string is all alphabetic, otherwise it returns false. An empty string should also return false.
-*/
+bool EncryptString(string &word, int shifts);
+
+bool DecryptString(string &code, int shifts);
+
+double ComputeAverage(double array[], unsigned int size);
+
+double FindMinValue(double array[], unsigned int size);
+
+double FindMaxValue(double array[], unsigned int size);
+
+
 
 #endif /* ASSIGNMENT_1_H */

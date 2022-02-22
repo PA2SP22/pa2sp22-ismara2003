@@ -1,6 +1,6 @@
 /*
  * Name        : lab_7.cpp
- * Author      : FILL IN
+ * Author      : Amara Ihekwoeme
  * Description : Working with File I/O
  */
 #include <fstream>
@@ -57,7 +57,12 @@ int main() {
 }
 
 // CODE HERE -- FUNCTION DEFINITION
-
+bool ProcessFile(string filename) {
+  ifstream fin;
+  fin.open("lab_7_input.txt");
+  fin.close();
+  return "";
+}
 // For testing (DO NOT ALTER)
 void UnitTest() {
   cout << string(40, '-') << endl;

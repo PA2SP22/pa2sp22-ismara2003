@@ -34,7 +34,7 @@ void Hello();
  * Display message to stdout (no newline character after)
  */
 // CODE HERE (FUNCTION PROTOTYPE)
-
+void PrintMessage(const string &message);
 /*
  * function name: GetAnswer
  * parameters: none
@@ -44,7 +44,7 @@ void Hello();
  * Return the value 42
  */
 // CODE HERE (FUNCTION PROTOTYPE)
-
+int GetAnswer();
 /*
  * function name: FindLarger
  * parameters: int (const call-by-reference), int (const call-by-reference)
@@ -55,7 +55,7 @@ void Hello();
  * if the values are equivalent.
  */
 // CODE HERE (FUNCTION PROTOTYPE)
-
+int FindLarger(int const &first, int const &second);
 /*
  * function name: GetStats
  * parameters: string (const call-by-reference), int (call-by-reference),
@@ -69,7 +69,7 @@ void Hello();
  * characters in the first parameter (string)
  */
 // CODE HERE (FUNCTION PROTOTYPE)
-
+int GetStats(string &word, int &uppercase, int &lowercase);
 /*
  * function name: BuildMessage
  * parameters: string (const call-by-reference), bool (const call-by-reference)
@@ -83,8 +83,7 @@ void Hello();
  * "Message: empty".
  */
 // CODE HERE (FUNCTION PROTOTYPE)
-
-
+string BuildMessage(string word = "", bool fun = false );
 // For testing (DO NOT ALTER)
 #include <cctype>
 #include <vector>
@@ -108,6 +107,44 @@ void Hello() {
   cout << "Hello world!";
 }
 
+void PrintMessage(const string &message) {
+  cout << message;
+}
+
+int GetAnswer() {
+  return 42;
+}
+
+int FindLarger(int const &first, int const &second) {
+  if (first > second) {
+    return first;
+  } else {
+    return second;
+  }
+}
+// is there numbers in the string?
+int GetStats(string word, int uppercase, int lowercase) {
+  int count = 0;
+  int spaces = word.length();
+  spaces == spaces - lowercase;
+  spaces == spaces - uppercase;
+  count == uppercase + lowercase;
+  count == count - spaces;
+  return count;
+}
+
+string BuildMessage(string word, bool fun) {
+  if (fun == true) {
+    for (int i = 0; i < word.length(); i++) {
+    word.at(i) = toupper(word.at(i));
+    }
+    return "Message: "  + word;
+  } else if (word.length() == 0) {
+    return "Message: empty";
+  } else {
+    return "Message: " + word;
+  }
+}
 // For testing (DO NOT ALTER)
 void UnitTest() {
   cout << string(40, '-') << endl;
