@@ -59,9 +59,29 @@ int main() {
 // CODE HERE -- FUNCTION DEFINITION
 bool ProcessFile(string filename) {
   ifstream fin;
-  fin.open("lab_7_input.txt");
+  string line;
+  fin.open(filename);
+  if (!fin) {
+    return false;
+  }
+  while (!fin.eof()) {
+    getline(fin, line);
+    if (line == "10") {
+      OnTen();
+    } else if (line == "20") {
+      OnTwenty();
+    } else if (line == "30") {
+      OnThirty();
+    } else if (line == "40") {
+      OnForty();
+    } else if (line == "50") {
+      OnFifty();
+    } else {
+      OnError();
+    }
+  }
   fin.close();
-  return "";
+  return true;
 }
 // For testing (DO NOT ALTER)
 void UnitTest() {

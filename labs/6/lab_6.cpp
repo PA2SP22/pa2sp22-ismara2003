@@ -1,6 +1,6 @@
 /*
  * Name        : lab_6.cpp
- * Author      : FILL IN
+ * Author      : Amara Ihekwoeme
  * Description : Practicing Functions
  */
 
@@ -83,7 +83,7 @@ int GetStats(string &word, int &uppercase, int &lowercase);
  * "Message: empty".
  */
 // CODE HERE (FUNCTION PROTOTYPE)
-string BuildMessage(string word = "", bool fun = false );
+string BuildMessage(string word = "", bool fun = false);
 // For testing (DO NOT ALTER)
 #include <cctype>
 #include <vector>
@@ -122,20 +122,34 @@ int FindLarger(int const &first, int const &second) {
     return second;
   }
 }
-// is there numbers in the string?
-int GetStats(string word, int uppercase, int lowercase) {
-  int count = 0;
-  int spaces = word.length();
-  spaces == spaces - lowercase;
-  spaces == spaces - uppercase;
-  count == uppercase + lowercase;
-  count == count - spaces;
+/*
+ * function name: GetStats
+ * parameters: string (const call-by-reference), int (call-by-reference),
+ *             int (call-by-reference)
+ * default arguments: none
+ * return type: int
+ *
+ * Return the length of string. On return second parameter (int) should contain
+ * a count of the number of uppercase characters of first parameter (string),
+ * third parameter (int) should contain a count of the number of lowercase
+ * characters in the first parameter (string)
+ */
+int GetStats(string word, int &uppercase, int &lowercase) {
+  int count = word.length();
+  lowercase = uppercase = 0;
+  for (unsigned int i = 0; i < word.length(); i++) {
+    if (isupper(word.at(i))) {
+      uppercase++;
+    } else if (islower(word.at(i))) {
+      lowercase++;
+    }
+  }
   return count;
 }
 
 string BuildMessage(string word, bool fun) {
   if (fun == true) {
-    for (int i = 0; i < word.length(); i++) {
+    for (unsigned int i = 0; i < word.length(); i++) {
     word.at(i) = toupper(word.at(i));
     }
     return "Message: "  + word;

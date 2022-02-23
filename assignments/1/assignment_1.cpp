@@ -2,7 +2,7 @@
  * Name        : Assignment 1
  * Author      : Amara Ihekwoeme
  * Description : Working with functions
- * Sources     : FILL IN
+ * Sources     : n/a
  */
 
 #include "assignment_1.h"
@@ -26,10 +26,10 @@ bool CheckAlphabetic(const string &word) {
 }
 
 bool EncryptString(string &word, int shifts) {
-  //shifts letters of a character in a word
-  //only problem is that if it shift too much it will go out of alphabet range
-  //u need to account for it with if statestments for capital A and Z & a and z
-  //alphabet end
+  // shifts letters of a character in a word
+  // only problem is that if it shift too much it will go out of alphabet range
+  // u need to account for it with if statestments for capital A and Z & a and z
+  // alphabet end
   int check = 0;
   if (word.empty()) {
     return false;
@@ -41,8 +41,8 @@ bool EncryptString(string &word, int shifts) {
   }
   if (check >= 1) {
       return false;
-    } 
-  //alphabet end  
+  }
+  // alphabet end
   shifts %= 26;
   for (unsigned int i = 0; i < word.length(); i++) {
     if (isupper(word.at(i))) {
@@ -57,8 +57,8 @@ bool EncryptString(string &word, int shifts) {
       if (word.at(i) > 'z' || word.at(i) < 0) {
         word.at(i) -= 26;
         } else if (word.at(i) < 'a') {
-          word.at(i) += 26; 
-      }
+          word.at(i) += 26;
+        }
     }
   }
   return true;
