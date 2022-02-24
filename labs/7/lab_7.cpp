@@ -66,7 +66,9 @@ bool ProcessFile(string filename) {
   }
   while (!fin.eof()) {
     getline(fin, line);
-    if (line == "10") {
+    if (fin.eof()) {
+      break;
+    } else if (line == "10") {
       OnTen();
     } else if (line == "20") {
       OnTwenty();
