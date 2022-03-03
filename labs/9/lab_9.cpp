@@ -184,7 +184,10 @@ int main() {
    */
   string Spaceship::ToString() const {
     stringstream ss;
-    ss << name_ << "\n" << "Top Speed:     " << "Warp " << top_speed_ << "0\n"
+    ss.setf(std::ios::fixed);
+	  ss.setf(std::ios::showpoint);
+	  ss.precision(2);
+    ss << name_ << "\n" << "Top Speed:     " << "Warp " << top_speed_ << "\n"
     << "Fuel Source:   " << fuel_source_ << "\n"
     << "Crew Capacity: " << crew_capacity_;
     return ss.str();
