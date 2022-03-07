@@ -18,9 +18,13 @@ using std::ofstream;
 int main() {
   // Declare our Streams
   ifstream fin;
+  /*not sure if i need that 
+  cuz im out putting it to the command line */
   ofstream fout;
   // Open our files
   fin.open("infile.txt");
+  /*not sure if i need that 
+  cuz im out putting it to the command line */
   fout.open("outfile.txt");
 
   // Get the numbers from infile and output to outfile
