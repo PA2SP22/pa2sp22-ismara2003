@@ -29,7 +29,7 @@ const Money operator +(const Money& amount1, const Money& amount2) {
  * @return Money - The result of the subtraction
  */
 const Money operator -(const Money& amount1, const Money& amount2) {
-  
+  // Very similar to + overloaded operator ^^^^^^^
 }
 
 /*
@@ -39,7 +39,7 @@ const Money operator -(const Money& amount1, const Money& amount2) {
  * @return bool - True if the objects have the same values, otherwise false
  */
 bool operator ==(const Money &amount1, const Money &amount2) {
-  
+  // compare amount1.dollars_ to amount2.dollars_ AND amount1.cents_ TO amount2.cents_
 }
 
 /*
@@ -48,7 +48,7 @@ bool operator ==(const Money &amount1, const Money &amount2) {
  * @return Money - The result of the negation of the two member variables
  */
 const Money operator -(const Money &amount) {
-  
+  // Negate amount.dollars_ and Negate amount.cents_
 }
 
 /*
@@ -62,7 +62,8 @@ const Money operator -(const Money &amount) {
  * @return ostream& - The ostream object to allow for chaining of <<
  */
 ostream& operator <<(ostream &out, const Money &amount) {
-
+  // out << "$" << ??? << "." << ???
+  
   return out;
 }
 
