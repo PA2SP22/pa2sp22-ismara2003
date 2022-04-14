@@ -16,12 +16,12 @@
 using std::string;
 
 class SLNode {
-public:
+ public:
 // Constructor
 SLNode();
 // Overloaded constructor
 SLNode(int contents);
-// Destructor 
+// Destructor
 ~SLNode();
 // Mutator
 void set_contents(int contents);
@@ -29,7 +29,7 @@ void set_next_node(SLNode* next_node);
 // Accessors
 int contents() const;
 SLNode* next_node() const;
-private:
+ private:
   SLNode* next_node_;
   int contents_;
 };

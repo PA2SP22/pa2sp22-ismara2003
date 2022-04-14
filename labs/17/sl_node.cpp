@@ -16,14 +16,12 @@ SLNode::SLNode(int contents) {
   contents_ = contents;
   next_node_ = NULL;
 }
-
-SLNode::~SLNode() {}
-
+SLNode::~SLNode() {
+}
 void SLNode::set_contents(int contents) {
   contents_ = contents;
 }
-
-void SLNode::set_next_node(SLNode* next_node) { 
+void SLNode::set_next_node(SLNode* next_node) {
   next_node_ = next_node;
 }
 int SLNode::contents() const {
