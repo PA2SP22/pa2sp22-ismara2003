@@ -5,7 +5,8 @@
  */
 
 // ADD HEADER GUARD HERE
-
+#ifndef lab_11_
+#define lab_11_
 #include <string>
 #include <iostream>
 #include <cstdlib>
@@ -113,3 +114,4 @@ class Money {
 };
 
 // REST OF HEADER GUARD GOES HERE
+#endif /*lab_11_*/

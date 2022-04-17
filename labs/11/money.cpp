@@ -29,7 +29,18 @@ const Money operator +(const Money& amount1, const Money& amount2) {
  * @return Money - The result of the subtraction
  */
 const Money operator -(const Money& amount1, const Money& amount2) {
-  // Very similar to + overloaded operator ^^^^^^^
+  // Luke: Very similar to + overloaded operator ^^^^^^^
+  // Get all the cents of object 1
+  int all_cents1 = amount1.cents_ + amount1.dollars_ * 100;
+  // Get all the cents of object 2
+  int all_cents2 = amount2.cents_ + amount2.dollars_ * 100;
+  // Subtract all the cents 1 from all cents 2
+  int sub_all_cents = all_cents1 - all_cents2;
+  // Cents to dollars
+  int final_dollars = sub_all_cents / 100;
+  // The rest kept as cents
+  int final_cents = sub_all_cents % 100;
+  return Money(final_dollars, final_cents);
 }
 
 /*
@@ -40,6 +51,11 @@ const Money operator -(const Money& amount1, const Money& amount2) {
  */
 bool operator ==(const Money &amount1, const Money &amount2) {
   // compare amount1.dollars_ to amount2.dollars_ AND amount1.cents_ TO amount2.cents_
+  if (amount1.dollars_ == amount2.dollars_ && amount1.cents_ == amount2.cents_) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 /*
@@ -49,6 +65,9 @@ bool operator ==(const Money &amount1, const Money &amount2) {
  */
 const Money operator -(const Money &amount) {
   // Negate amount.dollars_ and Negate amount.cents_
+  int negated_dollars = amount.dollars_ * -1;
+  int negated_cents = amount.cents_ * -1;
+  return Money(negated_dollars, negated_cents);
 }
 
 /*
@@ -62,8 +81,9 @@ const Money operator -(const Money &amount) {
  * @return ostream& - The ostream object to allow for chaining of <<
  */
 ostream& operator <<(ostream &out, const Money &amount) {
-  // out << "$" << ??? << "." << ???
-  
+  // not sure how to get the negative out of it
+  // and forgot the function that puts it in 2 places
+  out << "$"<< amount.dollars_ << "." << amount.cents_;
   return out;
 }
 
