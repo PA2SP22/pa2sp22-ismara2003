@@ -105,17 +105,16 @@ int Sum(int* the_array, unsigned int array_size) {
  *        Syntax: throw "The Message to throw";
  */
 int Max(int* the_array, unsigned int array_size) {
-  int max = the_array[0];
   if (the_array == NULL) {
     throw "NULL ARRAY REFERENCE";
   }
+  int max = the_array[0];
   // maybe else
   for (unsigned int i = 0; i < array_size; i++) {
     if (max < the_array[i]) {
       max = the_array[i];
     }
   }
-  
   return max;
 }
 
@@ -129,7 +128,16 @@ int Max(int* the_array, unsigned int array_size) {
  */
 int Min(int* the_array, unsigned int array_size) {
   // if i can get max, i should be able to get min
-  return 0;
+  if (the_array == NULL) {
+    throw "NULL ARRAY REFERENCE";
+  }
+  int min = the_array[0];
+  for (unsigned int i = 0; i < array_size; i++) {
+    if (min > the_array[i]) {
+      min = the_array[i];
+    }
+  }
+  return min;
 }
 
 // For testing (DO NOT ALTER)

@@ -49,9 +49,12 @@ const Money operator -(const Money& amount1, const Money& amount2) {
  * @param Money amount2 - The second object to compare
  * @return bool - True if the objects have the same values, otherwise false
  */
-bool operator ==(const Money &amount1, const Money &amount2) {
-  // compare amount1.dollars_ to amount2.dollars_ AND amount1.cents_ TO amount2.cents_
-  if (amount1.dollars_ == amount2.dollars_ && amount1.cents_ == amount2.cents_) {
+bool operator ==(const Money &amount1,
+                  const Money &amount2) {
+  /* compare amount1.dollars_ to amount2.dollars_            
+  AND amount1.cents_ TO amount2.cents_ */
+  if (amount1.dollars_ == amount2.dollars_ && amount1.cents_
+    == amount2.cents_) {
     return true;
   } else {
     return false;
@@ -83,7 +86,12 @@ const Money operator -(const Money &amount) {
 ostream& operator <<(ostream &out, const Money &amount) {
   // not sure how to get the negative out of it
   // and forgot the function that puts it in 2 places
-  out << "$"<< amount.dollars_ << "." << amount.cents_;
+  out << "$";
+  if (amount.dollars_ == 0 && amount.cents_ < 0) {
+    out << "-";
+  }
+  out << amount.dollars_ << "." << setw(2) << setfill('0')
+      << abs(amount.cents_);
   return out;
 }
 
