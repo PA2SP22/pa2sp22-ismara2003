@@ -173,10 +173,13 @@ bool ReplaceWord(string* the_string, string old_word, string new_word) {
   if (the_string == NULL) {
     throw "NULL STRING REFERENCE";
   }
+  if (!FindWord(the_string, old_word)) {
+    return false;
+  }
   // string1.replace(start, length, string 2)
   int position = the_string->find(old_word);
   the_string->replace(position, old_word.length(), new_word);
-  return false;
+  return true;
 }
 
 // For testing (DO NOT ALTER)
