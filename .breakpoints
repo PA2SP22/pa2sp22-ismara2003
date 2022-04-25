@@ -1,3 +1,12 @@
 {
-  "files": {}
+  "files": {
+    "labs/14/lab_14.cpp": [
+      {
+        "id": "2cb64356-2e58-4686-b8ef-873d2bb7a14d",
+        "line": 37,
+        "version": 1020,
+        "index": 1382
+      }
+    ]
+  }
 }
