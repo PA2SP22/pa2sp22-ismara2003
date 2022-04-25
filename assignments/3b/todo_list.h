@@ -8,7 +8,7 @@
 #include <iostream>
 #include <string>
 #include "todo_item.h"
-// #include <sstream>
+#include <sstream>
 using std::cout;
 // using std::cin;
 // using std::endl;
@@ -30,7 +30,7 @@ class TodoList {
   void AddItem(TodoItem* item);
   void DeleteItem(unsigned int delete_location);
   // Accessor
-  TodoItem* GetItem(int retrieve_location);
+  TodoList* GetItem(int retrieve_location);
   unsigned int GetSize();
   unsigned int GetCapacity();
   // functions
@@ -38,10 +38,11 @@ class TodoList {
   string ToFile();
  private:
   // Private Data Members
-  TodoItem* item;
+  // TodoItem* item;
   TodoItem** list;
-  unsigned int capacity;
-  unsigned int size
-  void increase_cap(); 
+  unsigned int capacity_;
+  unsigned int size_;
+  void increase_cap();
+  void SwapValues(TodoItem* &value_1, TodoItem* &value_2);
   void compact_array();
 }
