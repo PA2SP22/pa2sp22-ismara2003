@@ -30,7 +30,7 @@ class TodoList {
   void AddItem(TodoItem* item);
   void DeleteItem(unsigned int delete_location);
   // Accessor
-  TodoList* GetItem(int retrieve_location);
+  TodoItem* GetItem(int retrieve_location);
   unsigned int GetSize();
   unsigned int GetCapacity();
   // functions
@@ -44,5 +44,4 @@ class TodoList {
   unsigned int size_;
   void increase_cap();
   void SwapValues(TodoItem* &value_1, TodoItem* &value_2);
-  void compact_array();
 }

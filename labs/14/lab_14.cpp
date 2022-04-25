@@ -78,12 +78,16 @@ int main() {
  *               should increment your variable once you enter the outside loop.
  */
 int BubbleSort(int the_array[], unsigned int size) {
-  for (unsigned int i = size - 1; size <= 1; i++) {
+  int loops = 0;
+  for (unsigned int i = size - 1; i >= 1; i--) {
+    loops++;
     bool swapped = false;
     for (unsigned int j = 0; j <= i - 1; j++) {
       if (the_array[j] > the_array[j + 1])
         SwapValues(the_array[j], the_array[j+1]);
     }
+  }
+  return loops;
 }
 
 /*
@@ -96,17 +100,17 @@ int BubbleSort(int the_array[], unsigned int size) {
  */
 int OptimizedBubbleSort(int the_array[], unsigned int size) {
   int loops = 0;
-  for (unsigned int i = 0; size <= 1; i++) {
+  for (unsigned int i = size - 1; i >= 1; i--) {
     loops++;
-    swapped = false;
+    bool swapped = false;
     for(unsigned int j = 0; j <= i - 1; j++) {
       if (the_array[j] > the_array[j + 1]) {
-        SwapValues(the_array[j], the_array[j + 1])
+        SwapValues(the_array[j], the_array[j + 1]);
         swapped = true;
       }
     }
-    if (swapped = false) {
-      break; 
+    if (swapped == false) {
+      break;
     }
   }
   return loops;
@@ -121,7 +125,9 @@ int OptimizedBubbleSort(int the_array[], unsigned int size) {
  *               should increment your variable once you enter the outside loop.
  */
 int SelectionSort(int the_array[], unsigned int size) {
+  int loops = 0;
   for (unsigned int i = 0; i <= size - 1; i++) {
+    loops++;
     unsigned int smallest = i;
     for (unsigned int j = i + 1; j <= size - 1; j++) {
       if (the_array[j] < the_array[smallest]) {
@@ -132,6 +138,7 @@ int SelectionSort(int the_array[], unsigned int size) {
       SwapValues(the_array[i], the_array[smallest]);
     }
   }
+  return loops;
 }
 
 /*

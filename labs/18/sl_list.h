@@ -7,6 +7,7 @@
 
 #ifndef lab_18_
 #define lab_18_
+#include "sl_node.cpp"
 #include <iostream>
 #include <string>
 #include <cstddef>
@@ -17,7 +18,7 @@ using std::string;
 class SLList {
  public: 
   // Constructor
-  SLList(head_(NULL), size_(0));
+  SLList();
   // Destructor
   ~SLList();
   // Mutator
@@ -28,7 +29,7 @@ class SLList {
   unsigned int size() const
   string ToString();
  private: 
-  head_;
-  size_;
+  SLNode  *head_;
+  unsigned int size_;
 }
 #endif /*lab_18_*/

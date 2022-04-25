@@ -10,31 +10,38 @@
 
 // Constructor 
 TodoList::TodoList() {
-  list = new TodoList*[25];
+  // Create an array of 25 pointers to TodoItems
+  list = new TodoItem*[25];
+  // Sets capacity to 25
+  capacity_ = 25;
+  // Sets size to 0
+  size_ = 0;
+  // Set all of the pointers in the Array to NULL
   for (unsigned int i = 0; i < GetCapacity(); i++) {
     list[i] = NULL;
   }
 }
 // Destructor 
-~ TodoList::TodoList() {
+TodoList::~TodoList() {
   for (unsigned int i = 0; i < GetSize(); i++) {
     delete list[i];
   }
   delete[] list;
 }
 // Friend Function
-/* ostream& operator <<(ostream &out, TodoList &list) {
-  for (unsigned int i = 0; i < GetSize(); i++) {
-// loop involving i and j
+ ostream& operator <<(ostream &out, TodoList &list) {
+  for (unsigned int i = 0; i < list.GetSize(); i++) {
+    out << list.list[i]->description << ' ' 
+        << list.list[i]->priority() << ' '
+        << list.list[i]->completed();
   }
-} */
-// TodoItem* item is private... is that y i can use it in parameter
+} 
+
 void TodoList::AddItem(TodoItem* item) {
   if (GetSize() < GetCapacity()) {
     list[GetSize()] = item;
     size_++;
   } else if (GetSize() == GetCapacity()) {
-    // increase_cap is also private... how can i use it
     increase_cap();
   }
 }
@@ -43,6 +50,7 @@ void TodoList::DeleteItem(unsigned int delete_location) {
     // problem
   } else if (delete_location <= GetSize()) {
     delete list[delete_location];
+    // compacting array
     for (unsigned int i = delete_location; i < GetSize(); i++) { 
       list[i] = list[i+1];
       if (i == GetSize()) {
@@ -51,7 +59,7 @@ void TodoList::DeleteItem(unsigned int delete_location) {
     }
   }
 }
-TodoList* TodoList::GetItem(int retrieve_location) {
+TodoItem* TodoList::GetItem(int retrieve_location) {
   if (list[retrieve_location - 1] == NULL) {
     return NULL;
   } else if (retrieve_location > 0 && retrieve_location <= GetSize()) {
@@ -61,7 +69,7 @@ TodoList* TodoList::GetItem(int retrieve_location) {
 unsigned int TodoList::GetSize() {
   return size_;
 }
-unsigned int GetCapacity() {
+unsigned int TodoList::GetCapacity() {
   return capacity_;
 }
 void TodoList::Sort() {
@@ -84,7 +92,7 @@ void TodoList::increase_cap() {
     new_array[i] = list[i];
   }
 }
-  void TodoList::SwapValues(TodoList* &value_1, TodoList* &value_2) {
+void TodoList::SwapValues(TodoList* &value_1, TodoList* &value_2) {
   TodoItem* value_3;
   value_3 = value_1;
   value_1 = value_2;
