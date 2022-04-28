@@ -1,6 +1,6 @@
 /*
  * Name        : template.cpp
- * Author      : FILL IN
+ * Author      : Amara Ihekwoeme
  * Description : Various functions using templates. Please note you can just
  *               write the definitions in here. No need for prototypes.
  */
@@ -24,6 +24,18 @@ using std::stringstream;
  * @return string - A string containing the contents of values separated by the
  *                  specified separator character
  */
+template<typename T>
+string PrepareForDisplay(T values[], unsigned int size, char seperator = ',') {
+  stringstream ss;
+  ss.setf(std::ios::fixed);
+  ss.setf(std::ios::showpoint);
+  ss.precision(2);
+  for (unsigned int i = 0; i < size - 1; i++) {
+    ss << values[i] << seperator;
+  } 
+  ss << values[size - 1];
+  return ss.str();
+}
 
 
 /*
@@ -34,7 +46,16 @@ using std::stringstream;
  * @param T value_to_find - The value to search for within the array
  * @return bool - true if value is found in the array, otherwise false
  */
-
+template<typename T>
+bool HasValue(T values[], unsigned int size, T value_to_find) {
+  bool found = false;
+  for (unsigned int i = 0; i < size; i++) {
+    if (values[i] == value_to_find) {
+      found = true;
+    }
+  }
+  return found; 
+}
 
 /*
  * Function Name: ValueAt
@@ -50,7 +71,20 @@ using std::stringstream;
  *               the type and sets error to true. To get a zero representation
  *               you can return T()
  */
-
+// just to compile
+template<typename T>
+T ValueAt(T values[], unsigned int size, unsigned int index, bool &error) {
+  // if (size <= index) {
+  //   error = false;
+  //   return T();
+  // }
+  if (index < size) {
+    error = false;
+    return values[index];
+  }
+  error = true;
+  return T();
+}
 
 /*
  * Function Name: Sum
@@ -60,7 +94,15 @@ using std::stringstream;
  * @param unsigned int size - The size of the array
  * @return T - The sum of the values in the array
  */
-
+// To compile
+template<typename T>
+T Sum(T Values[], unsigned int size) {
+  T sum = T();
+  for (unsigned int i = 0; i < size; i++) {
+    sum += Values[i];
+  }
+  return sum;
+}
 
 /*
  * Function Name: SwapValues
@@ -72,4 +114,14 @@ using std::stringstream;
  * @param unsigned int index2 - The position of the second value to be swapped
  * @return bool - true if the swap was successful, otherwise false
  */
-
+template<typename T>
+bool SwapValues(T values[], unsigned int size, unsigned int index1, unsigned int index2) {
+  if (index1 < size && index2 < size) {
+    T index3 = values[index1];
+    // T values[index3] = values[index1];
+    values[index1] = values[index2];
+    values[index2] = index3;
+    return true;
+  }
+  return false;
+}
