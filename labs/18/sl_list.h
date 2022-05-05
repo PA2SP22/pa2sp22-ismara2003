@@ -22,14 +22,14 @@ class SLList {
   // Destructor
   ~SLList();
   // Mutator
-  void InsertHead(int head);
+  void InsertHead(int head_value);
   void RemoveHead();
   void Clear();
   // Accessor
-  unsigned int size() const
+  unsigned int size() const;
   string ToString();
  private: 
   SLNode  *head_;
   unsigned int size_;
-}
+};
 #endif /*lab_18_*/

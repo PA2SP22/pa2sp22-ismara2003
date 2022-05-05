@@ -47,7 +47,7 @@ void TodoList::AddItem(TodoItem* item) {
 }
 void TodoList::DeleteItem(unsigned int delete_location) {
   if (delete_location >= GetSize()) {
-    // problem
+    // problem... do i return?
   } else if (delete_location <= GetSize()) {
     delete list[delete_location];
     // compacting array
@@ -86,6 +86,11 @@ void TodoList::Sort() {
     break;
   }
 }
+  string TodoList::ToFile() {
+    for (unsigned int i = 0; i < size_; i++) {
+       ToFile().list[i];
+    }
+  }
 void TodoList::increase_cap() {
   TodoList** new_array = new TodoList*[capacity_ + 10];
   for (unsigned int i = 0; i < size_; i++) {
@@ -97,4 +102,5 @@ void TodoList::SwapValues(TodoList* &value_1, TodoList* &value_2) {
   value_3 = value_1;
   value_1 = value_2;
   value_2 = value_3;
-  }
+}
+  
