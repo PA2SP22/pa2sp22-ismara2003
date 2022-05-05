@@ -124,8 +124,8 @@ unsigned int Fibonacci(unsigned int fib_value) {
 bool WordIsPalindrome(string word) {
   if (word.length() == 0 || word.length() == 1) {
     return true;
-  } else if (word.at(word.length()-1) == word.at(0)) {
-    word = word.substr(1, word.length() -2);
+  } else if (word.at(word.length()- 1) == word.at(0)) {
+    word = word.substr(1, word.length() - 2);
     return WordIsPalindrome(word);
   } else {
     return false;
