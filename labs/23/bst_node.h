@@ -14,7 +14,7 @@
 // using std::endl;
 // using std::string;
 class BSTNode {
-public:
+ public:
 // Constructor
 BSTNode();
 // Overloaded Constructor
@@ -22,7 +22,7 @@ BSTNode(int contents);
 // Destructor
 ~BSTNode();
 // Mutator
-void SetContents(int content);
+void SetContents(int contents);
 // Accessor
 int GetContents() const;
 int& GetContents();
@@ -34,7 +34,8 @@ BSTNode* GetLeftChild() const;
 BSTNode*& GetLeftChild();
 BSTNode* GetRightChild() const;
 BSTNode*& GetRightChild();
-private:
+
+ private:
 BSTNode* left_child_;
 BSTNode* right_child_;
 int contents_;
