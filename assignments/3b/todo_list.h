@@ -5,6 +5,10 @@
                  Class
  * Sources     : Luke Sathrum
  */
+
+#ifndef TODO_LIST
+#define TODO_LIST
+
 #include <iostream>
 #include <string>
 #include "todo_item.h"
@@ -44,4 +48,6 @@ class TodoList {
   unsigned int size_;
   void increase_cap();
   void SwapValues(TodoItem* &value_1, TodoItem* &value_2);
-}
+};
+
+#endif

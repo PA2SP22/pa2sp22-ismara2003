@@ -7,14 +7,16 @@
 
 #ifndef lab_18_
 #define lab_18_
-#include "sl_node.cpp"
-#include <iostream>
+#include "sl_node.h"
 #include <string>
+#include <iostream>
 #include <cstddef>
+#include <sstream>
+using std::stringstream;
+using std::string;
 // using std::cout;
 // using std::cin;
 // using std::endl;
-using std::string;
 class SLList {
  public: 
   // Constructor
@@ -28,8 +30,9 @@ class SLList {
   // Accessor
   unsigned int size() const;
   string ToString();
+
  private: 
-  SLNode  *head_;
+  SLNode* head_;
   unsigned int size_;
 };
 #endif /*lab_18_*/

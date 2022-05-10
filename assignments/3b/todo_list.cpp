@@ -8,7 +8,7 @@
 
 #include "todo_list.h"
 
-// Constructor 
+// Constructor
 TodoList::TodoList() {
   // Create an array of 25 pointers to TodoItems
   list = new TodoItem*[25];
@@ -21,50 +21,57 @@ TodoList::TodoList() {
     list[i] = NULL;
   }
 }
-// Destructor 
+// Destructor
 TodoList::~TodoList() {
+  // clears list
+  // first arrows then array?
   for (unsigned int i = 0; i < GetSize(); i++) {
     delete list[i];
   }
   delete[] list;
 }
 // Friend Function
- ostream& operator <<(ostream &out, TodoList &list) {
+ostream& operator <<(ostream &out, TodoList &list) {
   for (unsigned int i = 0; i < list.GetSize(); i++) {
-    out << list.list[i]->description << ' ' 
+    out << list.list[i]->description() << ' '
         << list.list[i]->priority() << ' '
         << list.list[i]->completed();
   }
-} 
+  return out;
+}
 
 void TodoList::AddItem(TodoItem* item) {
+  // Add item if space
   if (GetSize() < GetCapacity()) {
     list[GetSize()] = item;
     size_++;
   } else if (GetSize() == GetCapacity()) {
     increase_cap();
+    list[GetSize()] = item;
+    size_++;
   }
 }
 void TodoList::DeleteItem(unsigned int delete_location) {
-  if (delete_location >= GetSize()) {
-    // problem... do i return?
-  } else if (delete_location <= GetSize()) {
-    delete list[delete_location];
+  // delete location
+  if (delete_location <= GetSize() && delete_location != 0) {
+    delete list[delete_location - 1];
     // compacting array
-    for (unsigned int i = delete_location; i < GetSize(); i++) { 
+    for (unsigned int i = delete_location - 1; i < GetSize() - 1; i++) {
       list[i] = list[i+1];
-      if (i == GetSize()) {
+      if (i == GetSize() - 1) {
         list[i] = NULL;
       }
     }
+    size_--;
   }
 }
 TodoItem* TodoList::GetItem(int retrieve_location) {
-  if (list[retrieve_location - 1] == NULL) {
-    return NULL;
-  } else if (retrieve_location > 0 && retrieve_location <= GetSize()) {
+  // Get location if viable
+  if (retrieve_location > 0
+      && retrieve_location <= static_cast<int>(GetSize())) {
     return list[retrieve_location - 1];
   }
+  return NULL;
 }
 unsigned int TodoList::GetSize() {
   return size_;
@@ -73,34 +80,50 @@ unsigned int TodoList::GetCapacity() {
   return capacity_;
 }
 void TodoList::Sort() {
+  // Bubble Sort
   bool swapped;
   for (unsigned int i = size_- 1; i >= 1; i--) {
     swapped = false;
-  for (unsigned int j = 0; j <= i -1; j++) {
-    if (list[j] > list[j+1]) {
-      SwapValues(list[j], list[j + 1]);
-      swapped = true;
+    for (unsigned int j = 0; j <= i -1; j++) {
+      // Biggest priority comes before, if not swap
+      if (list[j]->priority() > list[j+1]->priority()) {
+        SwapValues(list[j], list[j + 1]);
+        swapped = true;
+      }
     }
-  }
-  if (swapped == false) {
-    break;
+    if (swapped == false) {
+      break;
+    }
   }
 }
-  string TodoList::ToFile() {
-    for (unsigned int i = 0; i < size_; i++) {
-       ToFile().list[i];
-    }
+
+string TodoList::ToFile() {
+  stringstream ss;
+  // looping thru list and outputting contents
+  for (unsigned int i = 0; i < size_; i++) {
+    ss << list[i]->ToFile() << std::endl;
   }
+  return ss.str();
+}
+
 void TodoList::increase_cap() {
-  TodoList** new_array = new TodoList*[capacity_ + 10];
+  // Creating an array
+  TodoItem** new_array = new TodoItem*[capacity_ + 10];
+  // looping thru and copying the elements
   for (unsigned int i = 0; i < size_; i++) {
     new_array[i] = list[i];
   }
+  // What is the new capacity?
+  capacity_ = capacity_ + 10;
+  // Get rid of the old array
+  delete[] list;
+  // Assign the new array to list_
+  list = new_array;
 }
-void TodoList::SwapValues(TodoList* &value_1, TodoList* &value_2) {
+
+void TodoList::SwapValues(TodoItem* &value_1, TodoItem* &value_2) {
   TodoItem* value_3;
   value_3 = value_1;
   value_1 = value_2;
   value_2 = value_3;
 }
-  

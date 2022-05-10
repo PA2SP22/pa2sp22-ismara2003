@@ -24,7 +24,7 @@ void SLList::InsertHead(int head_value) {
   head_ = new_node;
 }
 void SLList::RemoveHead() {
-  if (size_ == 0) {
+  if (head_ == NULL) {
     return;
   }
   // Hints: Needs Delete and Uses Iterator
@@ -38,4 +38,42 @@ void SLList::RemoveHead() {
   delete temp;
   size_--;
   //ARROWS IN A NODE NEED AN ARROW
+}
+void SLList::Clear() {
+  // If list is empty do not remove
+  if (head_ == NULL) {
+    return;
+  }
+  // Create an Iterator Pointer
+  // Point it to where head is pointing to
+  SLNode *iterator = head_;
+  // Loop while iterator isn't null
+  while (iterator != NULL) {
+    // head points to the next node
+    head_ = head_->next_node();
+    // delete what the iterator is pointing to
+    delete iterator;
+    // iterator points to next node
+    iterator = head_;
+  }
+  size_ = 0;
+}
+unsigned int SLList::size() const {
+  return size_;
+}
+string SLList::ToString() {
+  SLNode *iterator = head_;
+  stringstream ss;
+  if (head_ == NULL) {
+    return "";
+  }
+  while (iterator != NULL) {
+    if (iterator->next_node() == NULL) {
+      ss << iterator->contents();
+    } else {
+       ss << iterator->contents() << ", ";
+    }
+    iterator = iterator->next_node();
+  }
+  return ss.str();
 }

@@ -5,6 +5,9 @@
  * Sources     : Luke Sathrum
  */
 
+#ifndef TODO_ITEM
+#define TODO_ITEM
+
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -27,9 +30,11 @@ bool completed();
 void set_description(string description);
 void set_priority(int priority);
 void set_completed(bool completed);
+
  private:
-  string description_;
-  int priority_;
-  bool completed_;
-  string Scrub(string description);
+string description_;
+int priority_;
+bool completed_;
+string Scrub(string description);
 };
+#endif
