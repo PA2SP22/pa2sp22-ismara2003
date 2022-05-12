@@ -28,7 +28,7 @@ void RemoveTail();
 int GetHead() const;
 int GetTail() const;
 void Clear();
-unsigned int size() const
+unsigned int size() const;
 string ToString() const;
 private:
 // Points to first node
