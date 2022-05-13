@@ -37,7 +37,7 @@ bool BSTree::Insert(int number, BSTNode*& subroot) {
     BSTNode *new_node = new BSTNode(number);
     // subroot = new node
     subroot = new_node;
-    //incremeant size
+    // incremeant size
     size_++;
     return true;
     // if value is smaller, root is now left node
@@ -53,12 +53,12 @@ bool BSTree::Insert(int number, BSTNode*& subroot) {
 }
 void BSTree::Clear(BSTNode*& subroot) {
   /* Clear in Post Order */
-   if (subroot != NULL) {
+  if (subroot != NULL) {
     if (subroot->GetLeftChild() != NULL) {
-    Clear(subroot->GetLeftChild());
+      Clear(subroot->GetLeftChild());
     }
     if (subroot->GetLeftChild()) {
-     Clear(subroot->GetRightChild());
+      Clear(subroot->GetRightChild());
     }
     delete subroot;
     subroot = NULL;
