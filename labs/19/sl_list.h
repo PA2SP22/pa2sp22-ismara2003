@@ -15,7 +15,7 @@ using std::stringstream;
 using std::string;
 
 class SLList {
-public:
+ public:
 // Constructor
 SLList();
 // Destructor
@@ -30,7 +30,7 @@ int GetTail() const;
 void Clear();
 unsigned int size() const;
 string ToString() const;
-private:
+ private:
 // Points to first node
 SLNode* head_;
 // Points to last node

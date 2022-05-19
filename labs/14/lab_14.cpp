@@ -103,7 +103,7 @@ int OptimizedBubbleSort(int the_array[], unsigned int size) {
   for (unsigned int i = size - 1; i >= 1; i--) {
     loops++;
     bool swapped = false;
-    for(unsigned int j = 0; j <= i - 1; j++) {
+    for (unsigned int j = 0; j <= i - 1; j++) {
       if (the_array[j] > the_array[j + 1]) {
         SwapValues(the_array[j], the_array[j + 1]);
         swapped = true;

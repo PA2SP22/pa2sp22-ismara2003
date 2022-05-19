@@ -14,17 +14,29 @@ SLList::SLList() {
 SLList::~SLList() {
   Clear();
 }
+
 void SLList::InsertHead(int head_value) {
   // Create a new node set to the head_value
   SLNode *new_node = new SLNode(head_value);
   size_++;
-   // Point the new node to where head is pointing to
+  // Point the new node to where head is pointing to
   new_node->set_next_node(head_);
-  // Head needs to point to the new node
   head_ = new_node;
+  // ...
+  if (head_->next_node() == NULL) {
+    tail_ = head_;
+  }
 }
 void SLList::InsertTail(int tail_value) {
-
+  if (head_ == NULL) {
+    InsertHead(tail_value);
+  } else {
+    SLNode *new_node = new SLNode(tail_value);
+    // ...
+    tail_->set_next_node(new_node);
+    tail_ = new_node;
+    size_++;
+  }
 }
 void SLList::RemoveHead() {
   if (head_ == NULL) {
@@ -40,26 +52,38 @@ void SLList::RemoveHead() {
   // Step 3: Remove the node temp is pointing to
   delete temp;
   size_--;
+  if (head_ == NULL) {
+    tail_ = NULL;
+  }
 }
+
 void SLList::RemoveTail() {
-  // Condition for an empty list
-  // Don't do anything
-  if (head_ == NULL && tail_ == NULL) {
-    return;
-  // If one in list, we delete that one
-  // then make them both equal null
-  } else if (head_ == tail_) {
-    RemoveHead();
-  } else {
-    // Objective: tansverse to second to last node
-    // need iterator
-    // point it to what head is pointing to
+  if (head_ != NULL) {
+    // if one node in the list, just call removehead
+    if (head_ != NULL && head_ == tail_) {
+      RemoveHead();
+    } else {
+    SLNode* iterator = head_;
+    while (iterator->next_node() != tail_) {
+      iterator = iterator->next_node();
+    }
+    iterator->set_next_node(NULL);
+    delete tail_;
+    tail_ = iterator;
+    size_--;
+    }
   }
 }
 int SLList::GetHead() const {
+  if (head_ == NULL) {
+    return 0;
+  }
   return head_->contents();
 }
 int SLList::GetTail() const {
+  if (tail_ == NULL) {
+    return 0;
+  }
   return tail_->contents();
 }
 void SLList::Clear() {
@@ -70,20 +94,36 @@ void SLList::Clear() {
   SLNode *iterator;
   // Point to where head is pointing to
   iterator = head_;
-  if (iterator != NULL) {
-  // head points to next node
+  while (iterator != NULL) {
+  // Head points to next node
   head_ = head_->next_node();
   // Delete what the iterator poinying to
   delete iterator;
-  size_--;
-  // iterator points to next node 
+  // Iterator points to next node
   // aka what head is pointing to
   iterator = head_;
   }
+  head_ = NULL;
+  tail_ = NULL;
+  size_ = 0;
 }
 unsigned int SLList::size() const {
   return size_;
 }
+
 string SLList::ToString() const {
-  return "";
+  SLNode *iterator = head_;
+  stringstream ss;
+  if (head_ == NULL) {
+    return "";
+  }
+  while (iterator != NULL) {
+    if (iterator->next_node() == NULL) {
+      ss << iterator->contents();
+    } else {
+       ss << iterator->contents() << ", ";
+    }
+    iterator = iterator->next_node();
+  }
+  return ss.str();
 }
