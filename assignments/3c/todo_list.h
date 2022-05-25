@@ -49,5 +49,4 @@ class TodoList {
   void increase_cap();
   void SwapValues(TodoItem* &value_1, TodoItem* &value_2);
 };
-
 #endif

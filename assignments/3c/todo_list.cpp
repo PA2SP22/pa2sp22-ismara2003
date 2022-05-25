@@ -30,7 +30,7 @@ TodoList::~TodoList() {
   }
   delete[] list;
 }
-// Friend Function
+// Friend Function, use for 3 and 4
 ostream& operator <<(ostream &out, TodoList &list) {
   for (unsigned int i = 0; i < list.GetSize(); i++) {
     out << list.list[i]->description() << ' '

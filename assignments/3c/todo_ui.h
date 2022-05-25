@@ -11,11 +11,11 @@
 #include <sstream>
 #include "CinReader.h"
 #include "todo_list.h"
+using std::stringstream;
 // using std::cout;
 // using std::cin;
 // using std::endl;
 // using std::string;
-// using std::stringstream;
 
 class TodoUI {
  public:

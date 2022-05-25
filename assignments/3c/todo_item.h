@@ -38,3 +38,4 @@ bool completed_;
 string Scrub(string description);
 };
 #endif
+
