@@ -31,11 +31,12 @@ TodoList::~TodoList() {
   delete[] list;
 }
 // Friend Function, use for 3 and 4
+// static cast to boolean
 ostream& operator <<(ostream &out, TodoList &list) {
   for (unsigned int i = 0; i < list.GetSize(); i++) {
-    out << list.list[i]->description() << ' '
-        << list.list[i]->priority() << ' '
-        << list.list[i]->completed();
+    out << list.list[i]->description() << ' ';
+    out << list.list[i]->priority() << ' ';
+    out << list.list[i]->completed() << std::endl;
   }
   return out;
 }

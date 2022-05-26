@@ -22,7 +22,7 @@ using std::ostream;
 
 class TodoList {
  public:
-  // Constructor 
+  // Constructor
   TodoList();
   // Destructor
   ~TodoList();
@@ -40,6 +40,7 @@ class TodoList {
   // functions
   void Sort();
   string ToFile();
+
  private:
   // Private Data Members
   // TodoItem* item;

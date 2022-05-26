@@ -29,7 +29,10 @@ void DLList::PushFront(int contents) {
   size_++;
   new_node->SetContents(contents);
   new_node->SetNext(head_);
-  
+  head_ = new_node;
+  if (tail_ == NULL) {
+    tail_ = new_node;
+  }
 }
 // Creates DLNode with contents of parameter
 // and adds to the end of list
@@ -95,12 +98,23 @@ void DLList::PopBack() {
 // If not found, 
 // output "Not Found" to standard error output
 void DLList::RemoveFirst(int number) {
-  DLNode *iterator = head_;
-  while (iterator != NULL)
-    iterator = iterator->GetNext();
-    if (iterator->GetContents() == number) {
-      // delete it but then loose memory
+   if (head_ == NULL) {
+    std::cerr << "Not Found";
+  } else {
+    DLNode *iterator = head_;
+    while (iterator != NULL && iterator->GetContents() != number) {
+      iterator = iterator->GetNext();
     }
+    if (iterator == NULL) {
+      std::cerr << "Not Found";
+    // else it equals number
+    } else {
+      DLNode *trailer = iterator->GetPrevious();
+      trailer->SetNext(iterator->GetNext());
+      delete iterator;
+      size_--;
+    }
+  }
 }
 // Find all values to match, if found remove node
 // If not found,
@@ -116,15 +130,45 @@ bool DLList::Exists(int number) {
 // Resets size to 0
 // head_ and tail_ to NULL
 void DLList::Clear() {
-  
+  DLNode *iterator = head_;
+  while (iterator != NULL) {
+    head_ = head_->GetNext();
+    delete iterator;
+    iterator = head_;
+  }
+  tail_ = NULL;
+  head_ = NULL;
+  size_ = 0;
 }
 // Output contents comma seperated
 // from first node to last node
 // If empty, return empty string
 // and output "List Empty" to standard error output
 string DLList::ToStringForwards() {
-  return "";
+  if (size_ == 0) {
+    std::cerr << "List Empty";
+    return "";
+  }
+  stringstream ss;
+  DLNode *iterator = head_;
+  while (iterator != tail_) {
+    ss << iterator->GetContents() << ", ";
+    iterator = iterator->GetNext();
+  }
+  ss << iterator->GetContents();
+  return ss.str();
 }
 string DLList::ToStringBackwards() {
-  return "";
+  if (size_ == 0) {
+    std::cerr << "List Empty";
+    return "";
+  }
+  stringstream ss;
+  DLNode *iterator = tail_;
+  while (iterator != head_) {
+    ss << iterator->GetContents() << ", ";
+    iterator = iterator->GetPrevious();
+  }
+  ss << iterator->GetContents();
+  return ss.str();
 }

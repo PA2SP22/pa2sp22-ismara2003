@@ -35,8 +35,7 @@ CinReader reader;
   value = reader.readInt();
   if (value == 1) {
     cout << "You have chosen to add an item" << endl;
-    cout << "What is the decription of the item you would like to add" 
-         << endl;
+    cout << "What is the decription of the item you would like to add" << endl;
     string description = reader.readString();
     //
     cout << "What do you rate the priority from 1 - 5" << endl;
@@ -67,23 +66,20 @@ CinReader reader;
       string description = reader.readString();
       // call the function to change the description
       item->set_description(description);
-      // list_->GetItem(TodoItem(description, priority(), completed()));
     } else if (attribute == 2) {
       cout << "You have chosen to edit the priority" << endl;
       cout << "Type the priority" << endl;
       int priority = reader.readInt(1, 5);
       // call the function
       item->set_priority(priority);
-      // list_->GetItem(TodoItem(description(), priority, completed()));
     } else {
       cout << "You have chosen to change the completion status" << endl;
-      cout << "If completed, press 1" << endl;
-      cout << "If incomplete, press 0" << endl;
+      cout << "If completed, type false" << endl;
+      cout << "If incomplete, press true" << endl;
       // if they put a decimal... uh oh
-      bool completed = reader.readInt(0, 1);
+      bool completed = reader.readBool();
       // call the function
       item->set_completed(completed);
-      // list_->GetItem(TodoItem(description(), priority(), completed));
     }
   }
   // View All Items
@@ -91,23 +87,22 @@ CinReader reader;
     cout << "You have chosen to view all your items" << endl;
     cout << "These are your items: " << endl;
     cout << *list_ << endl;
-    // if (list_->GetSize() != 0) {
-    //   // Call ToFile
-    //   for (unsigned int i = 0; i < list_->GetSize(); i++) {
-    //     cout << list_->GetItem(i)->ToFile();
-    //   } 
-    // } else {
-    //   cout << "Your list is empty" << endl;
-    // }
   }
   // View Specific Item
   if (value == 4) {
     cout << "You have chosen to view a specific item" << endl;
     cout << "Which number on the list would you like to see?" << endl;
-    unsigned int number = reader.readInt(1, list_->GetSize() - 1);
+    unsigned int number = reader.readInt(1, list_->GetSize());
     cout << "This is your item" << endl;
-    // Use GetItem and ToFile
-    cout << list_->GetItem(number)->ToFile();
+    // Use GetItem
+    // Static Cast?
+    cout << list_->GetItem(number)->description() << " ";
+    cout << list_->GetItem(number)->priority() << " ";
+    if (list_->GetItem(number)->completed()) {
+    cout << "completed" << endl;
+    } else {
+      cout << "incompleted" << endl;
+    }
   }
   // Delete All Items
   if (value == 5) {
