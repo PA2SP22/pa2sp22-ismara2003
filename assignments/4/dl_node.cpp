@@ -12,7 +12,6 @@ DLNode::DLNode() {
   next_node_ = NULL;
 }
 DLNode::~DLNode() {
-  
 }
 /* Mutators */
 void DLNode::SetContents(int contents) {

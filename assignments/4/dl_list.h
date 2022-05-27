@@ -40,15 +40,15 @@ int GetFront() const;
 // if list is empty and return 0
 int GetBack() const;
 // Removes first node
-// Outputs "List Empty" to standard error output 
+// Outputs "List Empty" to standard error output
 // if empty
 void PopFront();
 // Removes last node
-// Outputs "List Empty" to standard error output 
+// Outputs "List Empty" to standard error output
 // if empty
 void PopBack();
 // Find "first" value to match, if found remove node
-// If not found, 
+// If not found,
 // output "Not Found" to standard error output
 void RemoveFirst(int number);
 // Find all values to match, if found remove node
@@ -68,6 +68,7 @@ void Clear();
 // and output "List Empty" to standard error output
 string ToStringForwards();
 string ToStringBackwards();
+
  private:
 unsigned int size_;
 DLNode* head_;
