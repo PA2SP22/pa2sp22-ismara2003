@@ -18,24 +18,24 @@ using std::string;
 using std::stringstream;
 class TodoItem {
  public:
-// Member Function
-string ToFile();
-// Constructor
-TodoItem(string description = "", int priority = 1, bool completed = false);
-// Accessors
-string description();
-int priority();
-bool completed();
-// Mutators
-void set_description(string description);
-void set_priority(int priority);
-void set_completed(bool completed);
+  // Member Function
+  string ToFile();
+  // Constructor
+  TodoItem(string description = "", int priority = 1, bool completed = false);
+  // Accessors
+  string description();
+  int priority();
+  bool completed();
+  // Mutators
+  void set_description(string description);
+  void set_priority(int priority);
+  void set_completed(bool completed);
 
  private:
-string description_;
-int priority_;
-bool completed_;
-string Scrub(string description);
+  string description_;
+  int priority_;
+  bool completed_;
+  string Scrub(string description);
 };
 #endif
 
