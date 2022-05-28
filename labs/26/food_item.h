@@ -7,6 +7,8 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <iomanip>
+#include "item.h"
 using std::ostringstream;
 using std::string;
 using std::ostream;
@@ -19,11 +21,13 @@ using std::ostream;
 class FoodItem : public Item {
  public:
   // Constructor
-  FoodItem(string name, int value, unsigned int calories, string unit_of_measure, double units);
+  FoodItem(string name = "fooditem", int value = 0,
+  unsigned int calories = 0, string unit_of_measure = "nounits",
+  double units = 0.0);
   // Destructor
   ~FoodItem();
   // Accessors
-  int calories();
+  unsigned int calories();
   string unit_of_measure();
   double units();
   // Mutators
@@ -36,5 +40,5 @@ class FoodItem : public Item {
   unsigned int calories_;
   string unit_of_measure_;
   double units_;
-}
+};
 #endif /*FOOD_ITEM_H*/

@@ -4,6 +4,8 @@
  * Description : Inheritance
  * Sources     : Luke Sathrum
  */
+#ifndef ITEM_H
+#define ITEM_H
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -14,8 +16,6 @@ using std::ostream;
 // using std::cin;
 // using std::endl;
 // using std::stringstream;
-#ifndef ITEM_H
-#define ITEM_H
 
 class Item {
  public:
@@ -24,7 +24,10 @@ class Item {
   ~Item();
   // Accessor
   string name();
-  int value();
+  unsigned int value();
+  // Mutator
+  void set_name(string name);
+  void set_value(unsigned int value);
   // Functions
   string ToString();
  private:
